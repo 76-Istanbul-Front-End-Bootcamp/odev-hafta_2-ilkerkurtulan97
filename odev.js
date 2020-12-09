@@ -3,6 +3,7 @@
   Asagidaki fonksiyonu "Hello, John ciktisi verecek sekilde duzenleyiniz."
  */
 
+/*
 var person = {
   name: "John",
   message: function () {    
@@ -12,6 +13,19 @@ var person = {
 
 var messageFunc = person.message
 messageFunc();
+*/
+//CEVABIM
+var person = {
+  name: "John",
+  message: function () {
+    console.log("Hello, " + this.name);
+  },
+};
+
+var messageFunc = person.message;
+messageFunc.apply(person);
+//messageFunc();
+
 
 
 /*  
@@ -22,6 +36,8 @@ messageFunc();
   60
   sonuclarini yazdiracak sekilde duzenleyiniz.
 */
+
+/*
 var numbers = {
   numbers: [[10,20,30], 2],
   multiply: function(){
@@ -29,6 +45,23 @@ var numbers = {
         const result = number * this.numbers[1];
         console.log(result)
     })
+  }
+};
+
+numbers.multiply();
+*/
+//CEVABIM
+var numbers = {
+  numbers: [[10, 20, 30], 2],
+  multiply: function () {
+    let result;
+
+      this.numbers[0].map((number, numberIndex) => {
+          result = number * this.numbers[1];
+          console.log(result);
+          
+      });
+      
   }
 };
 
@@ -42,9 +75,26 @@ numbers.multiply();
   Ornek : isValidName("John") true donmeli
   Ornek : isValidName(" J ohn") false donmeli
 */
+/*
+
 function isValidName(name){
 
 }
+*/
+//CEVABIM
+function isValidName(name) {
+  let myRegex = /^[a-zA-Z]+$/;
+
+  if (myRegex.test(name) == true) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+isValidName("ilker");
+
+
 
 /*
   Odev 4:
@@ -58,8 +108,32 @@ function isValidName(name){
   Ornek: katilimSaati("3", 20) 60 sonucunu vermelidir.
   Ornek: katilimSaati("5", "30") 150 sonucunu vermelidir.
 */
+/*
+
 function katilimSaati(dersSayisi, dersSuresi){
 
 }
+*/
+//CEVABIM
+
+function katilimSaati(dersSayisi, dersSuresi) {
+
+  let a = +dersSayisi;
+  let b = +dersSuresi;
+  let dakikaTotal;
+
+  if (!isNaN(a) && !isNaN(b)) {
+    dakikaTotal = a * b;
+    console.log(dakikaTotal);
+  }
+  else {
+    console.log("Please enter a number, or string number");
+  }
+
+}
+
+katilimSaati(5, "50");
+katilimSaati("sadknaskl12312/*", "lkasnd12e");
+
 
 
