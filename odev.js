@@ -83,30 +83,21 @@ function isValidName(name){
 */
 //CEVABIM
 function isValidName(name) {
-
   let trimmedName;
-  let splittedName;
   
-  if (typeof name === 'string' || name instanceof String)
-  {
-    trimmedName = name.trim();
-    splittedName = trimmedName.split(" "); //Splitted name is array now with elements of (spaces + 1)
-    splittedName.forEach((item) => {
-      if (item.length <= 1) {
-        //booleanArray.push(false);
-        //break;
-        return false;
-      }
-    });
-    return true;
-  }
-  else {
-    console.log("Please enter a string");
-    return false;
+  if (typeof name !== "string") {
+    return false
   }
 
+  trimmedName = name.trim().split(" ");
+
+  for (let i = 0; i<trimmedName.length; i++){
+    if (trimmedName[i].length <= 1) {
+      return false;
+    }
+      return true;
+  }
 }
-
 
 
 /*
@@ -128,25 +119,23 @@ function katilimSaati(dersSayisi, dersSuresi){
 }
 */
 //CEVABIM
-
 function katilimSaati(dersSayisi, dersSuresi) {
-
   let totalSure;
 
-  if ((typeof dersSayisi == "string" || typeof dersSayisi == "number") && !isNaN(dersSayisi) && !isNaN(dersSuresi)) {
+  if ((typeof dersSayisi == "string" || typeof dersSayisi == "number") && (typeof dersSuresi == "string" || typeof dersSuresi == "number")) {
     
-    totalSure = dersSayisi * dersSuresi;
-    console.log(totalSure);
-  }
-  
+    if (!isNaN(dersSayisi) && !isNaN(dersSuresi) && isFinite(dersSayisi) && isFinite(dersSuresi) && dersSayisi !== "" & dersSuresi !== "") {
+      totalSure = dersSayisi * dersSuresi;
+      return totalSure;
+    }
+    return false;
+  }  
+   
   else {
-    console.log("Please enter a number OR string number");
+    return false;
   }
 
 }
-
-katilimSaati(5, "50");
-katilimSaati("sadknaskl12312/*", "lkasnd12e");
 
 
 
