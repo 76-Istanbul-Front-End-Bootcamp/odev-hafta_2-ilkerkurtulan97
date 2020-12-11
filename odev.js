@@ -83,16 +83,29 @@ function isValidName(name){
 */
 //CEVABIM
 function isValidName(name) {
-  let myRegex = /^[a-zA-Z]+$/;
 
-  if (myRegex.test(name) == true) {
+  let trimmedName;
+  let splittedName;
+  
+  if (typeof name === 'string' || name instanceof String)
+  {
+    trimmedName = name.trim();
+    splittedName = trimmedName.split(" "); //Splitted name is array now with elements of (spaces + 1)
+    splittedName.forEach((item) => {
+      if (item.length <= 1) {
+        //booleanArray.push(false);
+        //break;
+        return false;
+      }
+    });
     return true;
-  } else {
+  }
+  else {
+    console.log("Please enter a string");
     return false;
   }
-}
 
-isValidName("ilker");
+}
 
 
 
@@ -118,16 +131,16 @@ function katilimSaati(dersSayisi, dersSuresi){
 
 function katilimSaati(dersSayisi, dersSuresi) {
 
-  let a = +dersSayisi;
-  let b = +dersSuresi;
-  let dakikaTotal;
+  let totalSure;
 
-  if (!isNaN(a) && !isNaN(b)) {
-    dakikaTotal = a * b;
-    console.log(dakikaTotal);
+  if ((typeof dersSayisi == "string" || typeof dersSayisi == "number") && !isNaN(dersSayisi) && !isNaN(dersSuresi)) {
+    
+    totalSure = dersSayisi * dersSuresi;
+    console.log(totalSure);
   }
+  
   else {
-    console.log("Please enter a number, or string number");
+    console.log("Please enter a number OR string number");
   }
 
 }
